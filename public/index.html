@@ -11,9 +11,9 @@
     <section id="app">
         <div>
             <div>
-                <h1>Chat</h1>
-                <p>Conectado como <b>{{ nick }}</b></p>
+                <h1>CHAT</h1>                
                 <template v-if="step === 'nick'">
+                    <h2>Ingresa tu nick</h2>
                     <div>
                         <div>
                             <div>
@@ -30,6 +30,7 @@
                     </div>
                 </template>
                 <template v-else>
+                    <p>Conectado como <b>{{ nick }}</b></p>
                     <div v-if="messages.length">
                         <div v-for="item in messages">
                             <div>
