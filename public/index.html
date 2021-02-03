@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section id="app">
+        <div>
+            <div>
+                <h1>Chat</h1>
+                <p>Conectado como <b>{{ nick }}</b></p>
+                <template v-if="step === 'nick'">
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    <input v-model="nick" type="text" placeholder="Ingrese su nick">
+                                </div>
+                                <div>
+                                    <a @click="signIn">
+                                        <button name="button">Ingresar</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template v-else>
+                    <div v-if="messages.length">
+                        <div v-for="item in messages">
+                            <div>
+                                <span>{{ item.nick }}</span> - {{ item.message }}
+                                <span>{{ new Date(item.date).toLocaleDateString() }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <input v-model="message" type="text" placeholder="Ingrese el mensaje">
+                        </div>
+                        <div>
+                            <a @click="send">
+                                <button name="button">Enviar</button>
+                            </a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div> 
+             
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./chat.js"></script>
+</body>
+</html>
